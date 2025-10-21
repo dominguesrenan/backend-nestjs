@@ -1,0 +1,65 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+      - PORT=4000
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
+    labels:
+      - "project=nestjs-api"
+      - "version=1.0.0"
+    networks:
+      - backend-network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=sistemabase
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    restart: unless-stopped
+    labels:
+      - "project=postgresql"
+      - "version=15-alpine"
+    networks:
+      - backend-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: unless-stopped
+    labels:
+      - "project=nginx-proxy"
+      - "version=1.0.0"
+    networks:
+      - backend-network
+
+volumes:
+  postgres_data:
+
+networks:
+  backend-network:
+    driver: bridge

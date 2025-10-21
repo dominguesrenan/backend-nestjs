@@ -1,0 +1,22 @@
+# -------------------------------
+# Dockerfile para NestJS - Desenvolvimento
+# -------------------------------
+FROM node:20-alpine
+
+# Instalar utilitários básicos
+RUN apk add --no-cache bash git curl nano openssl
+
+# Criar diretório dentro do container
+WORKDIR /usr/src/app
+
+# Instalar Nest CLI globalmente
+RUN npm install -g @nestjs/cli
+
+# Copiar package.json e package-lock.json
+COPY package*.json ./
+
+# Instalar dependências do projeto
+RUN npm install --legacy-peer-deps
+
+# Comando padrão: iniciar em modo desenvolvimento
+CMD ["npm", "run", "start:dev"]

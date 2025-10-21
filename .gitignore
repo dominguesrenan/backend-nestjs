@@ -1,0 +1,68 @@
+# ===========================================
+# BACKEND NESTJS - .gitignore
+# Autor: Renan Domingues
+# Projeto: Sistema Base Nest + Next
+# ===========================================
+
+# ===========================
+# BUILD / COMPILAÇÃO
+# ===========================
+dist/
+build/
+*.tsbuildinfo
+
+# ===========================
+# DEPENDÊNCIAS
+# ===========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===========================
+# AMBIENTE / CONFIG
+# ===========================
+.env
+!.env.example   # mantém apenas o exemplo
+
+# ===========================
+# DOCKER
+# ===========================
+!.dockerignore  # mantém apenas o exemplo
+!Dockerfile.dev  # mantém apenas o exemplo
+
+# ===========================
+# IDEs / EDITORES
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# ===========================
+# TESTES
+# ===========================
+coverage/
+test-results/
+jest-*.json
+*.log
+
+# ===========================
+# SISTEMA OPERACIONAL
+# ===========================
+.DS_Store
+Thumbs.db
+*.iml
+
+# ===========================
+# OUTROS ARQUIVOS TEMPORÁRIOS
+# ===========================
+*.local
+*.cache
+logs/
+*.pid
+*.seed
+*.old
