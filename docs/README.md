@@ -1,5 +1,4 @@
-# Sistema Base - Nest e Next
-
+# Nest.js
 Este é um projeto backend desenvolvido com **NestJS** (Node.js/TypeScript) com uma arquitetura para autenticação e gerenciamento de usuários. O projeto está estruturado para ser executado em containers Docker com **PostgreSQL** como banco de dados.
 
 ## Arquitetura e Estrutura

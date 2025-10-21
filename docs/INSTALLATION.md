@@ -1,5 +1,4 @@
-# Sistema Base - Nest e Next
-
+# Nest.js
 Abaixo estão as instruções para instalar e configurar o projeto para desenvolvimento.
 
 ## Clone do repositório
